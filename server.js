@@ -23,8 +23,10 @@ app.use(require("./config/checkToken"));
 
 // Put API routes here, before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
+app.use("/api/games", gamesRouter);
+
 // Protect the API routes below from anonymous users
-const ensureLoggedIn = require("./config/ensureLoggedIn");
+// const ensureLoggedIn = require("./config/ensureLoggedIn");
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
@@ -37,5 +39,5 @@ app.get("/*", function (req, res) {
 const port = process.env.PORT || 3001;
 
 app.listen(port, function () {
-  console.log(`Chatter connected to port ${port}`);
+  console.log(`Gamestop connected to port ${port}`);
 });

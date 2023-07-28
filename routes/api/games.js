@@ -23,5 +23,4 @@ router.delete("/:id", deleteGames);
 // this gets a game only
 router.get("/:id", findOneGameById);
 
-
 module.exports = router;

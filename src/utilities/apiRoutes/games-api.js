@@ -1,4 +1,4 @@
-import { sendRequest } from "../users/send-request";
+import { sendRequest } from "../send-request";
 
 const BASE_URL = "/api/games";
 
@@ -10,7 +10,7 @@ export async function deleteGames(gameId) {
   return sendRequest(`${BASE_URL}/${gameId}`, "DELETE");
 }
 
-export async function getAllGames() {
+export async function findAllGames() {
   return sendRequest(BASE_URL);
 }
 

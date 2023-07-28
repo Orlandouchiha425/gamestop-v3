@@ -10,24 +10,22 @@ const createGames = async (req, res) => {
   }
 };
 
-const findAllGames = (req, res) => {
-  Games.find({}, (err, foundGames) => {
-    if (!err) {
-      res.status(200).json({ message: "Found all Games!" });
-    } else {
-      res.status(400).json({ message: err.message });
-    }
-  });
+const findAllGames = async (req, res) => {
+  try {
+    const foundGames = await Games.find({});
+    res.status(200).json(foundGames);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
-const findClearanceGames = (req, res) => {
-  Games.find({ clearance: true }, (err, foundGames) => {
-    if (!err) {
-      res.status(200).json(foundGames);
-    } else {
-      res.status(400).json({ message: err.message });
-    }
-  });
+const findClearanceGames = async (req, res) => {
+  try {
+    const foundGames = await Games.find({ clearance: true });
+    res.status(200).json(foundGames);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
 };
 
 const deleteGames = (req, res) => {

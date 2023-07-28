@@ -17,7 +17,11 @@ function CleanUp() {
       <Routes>
         {user ? (
           <>
-            <Route path="/home" element={<Home setUser={setUser} />} />
+            <Route
+              path="/home"
+              element={<Home user={user} setUser={setUser} />}
+            />
+
             <Route
               path="/logout"
               element={<Logout user={user} setUser={setUser} />}
@@ -26,16 +30,17 @@ function CleanUp() {
         ) : (
           <>
             <Route
-              path="/signup"
-              element={<SignUpForm setUser={setUser} user={user} />}
-            />
-            <Route
               path="/login"
               element={<LoginForm setUser={setUser} user={user} />}
             />
             <Route
-              path="/*"
+              path="/signup"
               element={<SignUpForm setUser={setUser} user={user} />}
+            />
+
+            <Route
+              path="/*"
+              element={<LoginForm setUser={setUser} user={user} />}
             />
           </>
         )}
