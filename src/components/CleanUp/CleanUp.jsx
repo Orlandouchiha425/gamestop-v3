@@ -6,7 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import Logout from "../Logout/Logout";
 import LoginForm from "../LoginForm/LoginForm";
 import NavBar from "../../NavBar/NavBar";
-
+import Footer from "../Footer/Footer";
+import OneGame from "../OneGame/OneGame";
 function CleanUp() {
   const [user, setUser] = useState(getUser());
 
@@ -25,6 +26,10 @@ function CleanUp() {
             <Route
               path="/logout"
               element={<Logout user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/:id"
+              element={<OneGame setUser={setUser} user={user} />}
             />
           </>
         ) : (
@@ -45,6 +50,7 @@ function CleanUp() {
           </>
         )}
       </Routes>
+      <Footer />
     </div>
   );
 }

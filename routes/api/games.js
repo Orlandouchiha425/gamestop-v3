@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const {
   findAllGames,
-  findOneGameById,
+  findOnegameById,
   deleteGames,
   createGames,
   editGame,
@@ -21,6 +21,6 @@ router.put("/:id", editGame);
 router.delete("/:id", deleteGames);
 
 // this gets a game only
-router.get("/:id", findOneGameById);
+router.get("/:id", findOnegameById);
 
 module.exports = router;

@@ -33,9 +33,6 @@ export function getClearanceGames() {
 export async function findOnegameById(games) {
   return sendRequest(`${BASE_URL}/${games}`);
 }
-// export function cloudinaryImage(){
-//     return sendRequest(`${BASE_URL}/`)
-// }
 
 export function createImage(gameCreated) {
   return sendRequest(`${BASE_URL}`, "POST", gameCreated);

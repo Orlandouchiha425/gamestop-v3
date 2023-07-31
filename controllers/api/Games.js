@@ -38,14 +38,16 @@ const deleteGames = (req, res) => {
   });
 };
 
-const findOneGameById = (req, res) => {
-  Games.findById(req.params.id, (error, games) => {
-    if (!error) {
-      res.status(200).json({ message: "Showing One Game" });
-    } else {
-      res.status(400).json(error);
+const findOnegameById = async (req, res) => {
+  try {
+    const game = await Games.findById(req.params.id);
+    if (!game) {
+      return res.status(404).json({ message: "Game not found" });
     }
-  });
+    res.status(200).json(game);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 const editGame = (req, res) => {
@@ -68,7 +70,7 @@ module.exports = {
   findAllGames,
   findClearanceGames,
   deleteGames,
-  findOneGameById,
+  findOnegameById,
   editGame,
   createGames,
 };
