@@ -8,8 +8,11 @@ import LoginForm from "../LoginForm/LoginForm";
 import NavBar from "../../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import OneGame from "../OneGame/OneGame";
+import Cart from "../Cart/Cart";
+import AdminLogin from "../Admin/AdminLogin";
 function CleanUp() {
   const [user, setUser] = useState(getUser());
+  const [admin, setAdmin] = useState(false);
 
   return (
     <div>
@@ -31,12 +34,16 @@ function CleanUp() {
               path="/home/:id"
               element={<OneGame setUser={setUser} user={user} />}
             />
+            <Route
+              path="/cart"
+              element={<Cart setUser={setUser} user={user} />}
+            />
           </>
         ) : (
           <>
             <Route
-              path="/login"
-              element={<LoginForm setUser={setUser} user={user} />}
+              path="/adminlogin"
+              element={<AdminLogin setUser={setUser} user={user} />}
             />
             <Route
               path="/signup"

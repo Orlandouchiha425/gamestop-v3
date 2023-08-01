@@ -29,7 +29,7 @@ export default function Home() {
 
   const loaded = () => {
     return (
-      <div style={{ paddingBottom: "80px" }}>
+      <div style={{ paddingBottom: "100px" }}>
         <div className={styles.flexContainer}>
           {data.map((element, index) => (
             <Card key={index} sx={{ width: 300 }} className={styles.shadow}>

@@ -41,9 +41,14 @@ export default function OneGame() {
           <div className={styles["product-div"]}>
             <div className={styles["product-div-left"]}>
               <div className={styles["img-container"]}>
-                <img src={`${data.img}.jpg`} alt="game" />
+                <img
+                  src={`${data.img}.jpg`}
+                  alt="game"
+                  className={`${styles.zoom} ${styles.images}`}
+                />
+                <p className={styles.textalign}>By: {data.platform}</p>
               </div>
-              {/* <div className={styles["hover-container"]}>
+              {/* <div className={stysles["hover-container"]}>
               {data.}
             </div> */}
             </div>

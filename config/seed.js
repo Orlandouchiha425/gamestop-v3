@@ -14,7 +14,7 @@ const Games = require("../models/Games");
       genre: "Adventure and imagination",
       platform: "Imagination/Online",
       clearance: false,
-      img: "https://imgur.com/dcY4lLr",
+      img: "https://imgur.com/dcY4lLr.png",
       releaseDate: "06-20-2002",
       publisherInformation:
         "released in 2002 by Parker Brothers, a division of Hasbro, is based on the role-playing game Dungeons & Dragons (D&D)",
