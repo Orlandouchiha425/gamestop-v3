@@ -32,7 +32,7 @@ export default function Home() {
       <div style={{ paddingBottom: "80px" }}>
         <div className={styles.flexContainer}>
           {data.map((element, index) => (
-            <Card key={index} sx={{ width: 300 }}>
+            <Card key={index} sx={{ width: 300 }} className={styles.shadow}>
               <CardActionArea>
                 <a href={`/home/${element._id}`}>
                   <CardMedia
@@ -47,7 +47,7 @@ export default function Home() {
                     {element.title}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    {element.price}
+                    Price: ${element.price}
                   </Typography>
                 </CardContent>
               </CardActionArea>
