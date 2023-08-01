@@ -34,7 +34,7 @@ export default function SignUpForm({ setUser, user }) {
 
       const newUser = await signUp(formData);
       setUser(newUser);
-      navigate("/");
+      navigate("/home");
       // const user=await SignUp(formData)
     } catch (err) {
       console.log(err);

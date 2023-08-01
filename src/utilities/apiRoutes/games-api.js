@@ -30,8 +30,8 @@ export function getClearanceGames() {
   return sendRequest(`${BASE_URL}/clearance`); ///  return sendRequest(api/games/clearance)
 }
 
-export async function findOnegameById(games) {
-  return sendRequest(`${BASE_URL}/${games}`);
+export async function findOnegameById(gameId) {
+  return sendRequest(`${BASE_URL}/home/${gameId}`, "GET");
 }
 
 export function createImage(gameCreated) {

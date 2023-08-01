@@ -28,7 +28,7 @@ function CleanUp() {
               element={<Logout user={user} setUser={setUser} />}
             />
             <Route
-              path="/:id"
+              path="/home/:id"
               element={<OneGame setUser={setUser} user={user} />}
             />
           </>
