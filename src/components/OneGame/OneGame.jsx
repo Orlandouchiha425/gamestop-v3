@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { findOnegameById } from "../../utilities/apiRoutes/games-api";
 import { useParams } from "react-router-dom";
+import styles from "./OneGame.module.css"; // Import the CSS module directly into the component file
+import Rating from "../Rating/Rating";
 
 export default function OneGame() {
   const [data, setData] = useState();
@@ -33,23 +35,52 @@ export default function OneGame() {
       return null;
     }
 
-    return (
-      <div>
-        <img
-          src={`${data.img}.jpg`}
-          height="500px"
-          width="500px"
-          alt="Game Poster"
-        />
-        <h1>{capitalizeFirstCharacter(data.title)}</h1>
-        <h3>{data.price}$</h3>
-        <h5>this is just a test2 {data._id}</h5>
+    return data ? (
+      <div className={styles["main-wrapper"]}>
+        <div className={styles.container}>
+          <div className={styles["product-div"]}>
+            <div className={styles["product-div-left"]}>
+              <div className={styles["img-container"]}>
+                <img src={`${data.img}.jpg`} alt="game" />
+              </div>
+              {/* <div className={styles["hover-container"]}>
+              {data.}
+            </div> */}
+            </div>
+            <div className={styles["product-div-right"]}>
+              <span className={styles["product-name"]}>
+                <h1>{capitalizeFirstCharacter(data.title)}</h1>
+              </span>
+              <span className={styles["product-price"]}>$ {data.price}</span>
+              <Rating />
+              <p
+                className={`${styles["product-description"]} ${styles.firstLetter}`}
+              >
+                {data.description}
+              </p>
+              <div className={styles["btn-groups"]}>
+                <button type="button" className={styles["add-cart-btn"]}>
+                  <i className="fas fa-shopping-cart"></i>add to cart
+                </button>
+                <button type="button" className={styles["buy-now-btn"]}>
+                  <i className="fas fa-wallet"></i>buy now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    ) : (
+      <main className={styles["loading-screen"]}>
+        <h2>loading.... Please Wait for your Awesome Game!</h2>
+        <h1>this is ID: {id}</h1>
+      </main>
     );
   };
+
   const loading = () => {
     return (
-      <main className="loading-screen">
+      <main classNameName="loading-screen">
         <h2>loading.... Please Wait for your Awesome Game!</h2>
         <h1>this is ID: {id}</h1>
       </main>
