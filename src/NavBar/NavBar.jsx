@@ -2,13 +2,12 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUser } from "../utilities/users-api";
 import "./NavBar.css";
-import AdminLogin from "../../src/components/Admin/AdminLogin";
-import AdminSignUp from "../../src/components/Admin/AdminLogin";
+import AdminComponent from "../components/Admin/AdminComponent";
+import AdminSignUp from "../components/Admin/AdminComponent";
 
 export default function NavBar({ user }) {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showLogin, setShowLogin] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {

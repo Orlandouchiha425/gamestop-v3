@@ -1,11 +1,10 @@
-// import { Component } from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { signUp } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { Link } from "react-router-dom";
 
-export default function SignUpForm({ setUser, user }) {
+export default function SignUpForm({ setUser, user, admin, setAdmin }) {
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -17,25 +16,30 @@ export default function SignUpForm({ setUser, user }) {
   let navigate = useNavigate();
 
   const handleChange = (evt) => {
-    setState({ ...state, [evt.target.name]: evt.target.value, error: "" });
+    const { name, value } = evt.target;
+    setState({ ...state, [name]: value, error: "" });
 
-    //this is saying, we want setState to by dynamic({will copy everything from state,name emailpassword etc
-    //but in the [evt.target.name value error, we specified what needs to be dynamic or needs changed thats why password and confirm is not necessary]})
+    // Check if the selected role is "admin" and update the admin state accordingly
+    if (name === "role" && value === "admin") {
+      setAdmin(true);
+      console.log("admin role is true");
+    } else {
+      setAdmin(false);
+      console.log("admin role is false");
+    }
   };
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    //prevent function stops the default action from happening and stops the bubbling
 
     try {
-      const formData = { ...state }; //assign variable fomdata to everything in state from line 4-8 empty ofcourse,havent done anything yet
+      const formData = { ...state };
       delete formData.error;
       delete formData.confirm;
 
       const newUser = await signUp(formData);
       setUser(newUser);
       navigate("/home");
-      // const user=await SignUp(formData)
     } catch (err) {
       console.log(err);
       setState({ error: "Sign Up Failed" });
@@ -99,8 +103,19 @@ export default function SignUpForm({ setUser, user }) {
               onChange={handleChange}
               required
             />
-
             <label>Confirm</label>
+          </div>
+
+          <div className={styles.userbox}>
+            <select
+              name="role"
+              id="role"
+              value={state.role}
+              onChange={handleChange}
+            >
+              <option value="user">Player</option>
+              <option value="admin">Admin</option>
+            </select>
           </div>
 
           <button type="submit" disabled={disable}>
