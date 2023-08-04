@@ -14,12 +14,11 @@ import AdminComponent from "../Admin/AdminComponent"; // Import the Admin Compon
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
-
   // Check if user is logged in and has a role of "admin"
   useEffect(() => {
     if (user && user.role === "admin") {
       setAdmin(true);
-      console.log("you are a admin");
+      console.log("you are an admin");
     } else {
       setAdmin(false);
       console.log("you are not an admin :(");
@@ -60,7 +59,11 @@ function CleanUp() {
               <Route
                 path="/admin"
                 element={
-                  <AdminComponent setUser={setUser} user={user} admin={admin} />
+                  <AdminComponent
+                    setUser={setUser}
+                    admin={admin}
+                    setAdmin={setAdmin}
+                  />
                 }
               />
             )}

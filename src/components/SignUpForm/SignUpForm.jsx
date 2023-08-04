@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { Link } from "react-router-dom";
 
-export default function SignUpForm({ setUser, user, admin, setAdmin }) {
+export default function SignUpForm({ setUser }) {
   const [state, setState] = useState({
     name: "",
     email: "",
     password: "",
     confirm: "",
     error: "",
+    role: "user",
   });
 
   let navigate = useNavigate();
@@ -18,15 +19,6 @@ export default function SignUpForm({ setUser, user, admin, setAdmin }) {
   const handleChange = (evt) => {
     const { name, value } = evt.target;
     setState({ ...state, [name]: value, error: "" });
-
-    // Check if the selected role is "admin" and update the admin state accordingly
-    if (name === "role" && value === "admin") {
-      setAdmin(true);
-      console.log("admin role is true");
-    } else {
-      setAdmin(false);
-      console.log("admin role is false");
-    }
   };
 
   const handleSubmit = async (evt) => {
@@ -36,13 +28,13 @@ export default function SignUpForm({ setUser, user, admin, setAdmin }) {
       const formData = { ...state };
       delete formData.error;
       delete formData.confirm;
-
       const newUser = await signUp(formData);
+
       setUser(newUser);
       navigate("/home");
     } catch (err) {
       console.log(err);
-      setState({ error: "Sign Up Failed" });
+      setState({ ...state, error: "Sign Up Failed" });
     }
   };
 
