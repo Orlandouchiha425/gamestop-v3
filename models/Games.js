@@ -19,7 +19,16 @@ const gamesSchema = new Schema(
       type: Schema.Types.Mixed,
       required: true,
     },
-    rating: Number,
+    rating: [
+      {
+        star: Number,
+        postedbyUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+      },
+    ],
+    totalrating: {
+      type: String,
+      default: 0,
+    },
     quantity: Number,
     cart: {
       quantity: { type: Number, default: 0 },

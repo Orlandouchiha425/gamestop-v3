@@ -65,7 +65,12 @@ const editGame = (req, res) => {
     }
   );
 };
-
+// const ratingGame =async (req, res) => {
+//   const {_id} = req.user;
+//   const{star,gamesId}=req.body;
+//   const game = await Games.findById(gamesId)
+//   let alreadyRated =
+// };
 module.exports = {
   findAllGames,
   findClearanceGames,
@@ -73,4 +78,5 @@ module.exports = {
   findOnegameById,
   editGame,
   createGames,
+  // ratingGame,
 };

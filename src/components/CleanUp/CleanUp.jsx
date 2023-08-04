@@ -14,6 +14,7 @@ import AdminComponent from "../Admin/AdminComponent"; // Import the Admin Compon
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
+  const [ratingCount, setRatingCount] = useState(0);
   // Check if user is logged in and has a role of "admin"
   useEffect(() => {
     if (user && user.role === "admin") {
@@ -49,7 +50,14 @@ function CleanUp() {
             />
             <Route
               path="/home/:id"
-              element={<OneGame setUser={setUser} user={user} />}
+              element={
+                <OneGame
+                  setUser={setUser}
+                  user={user}
+                  ratingCount={ratingCount}
+                  setRatingCount={setRatingCount}
+                />
+              }
             />
             <Route
               path="/cart"

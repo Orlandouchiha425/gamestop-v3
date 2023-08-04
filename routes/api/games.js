@@ -8,6 +8,7 @@ const {
   createGames,
   editGame,
   findClearanceGames,
+  // ratingGame,
 } = require("../../controllers/api/Games");
 
 router.get("/clearance", findClearanceGames);
@@ -19,7 +20,8 @@ router.post("/", createGames);
 router.put("/:id", editGame);
 //delete
 router.delete("/:id", deleteGames);
-
+//put ratings
+// router.ratingGame("/:id", ratingGame);
 // this gets a game only
 router.get("/home/:id", findOnegameById);
 

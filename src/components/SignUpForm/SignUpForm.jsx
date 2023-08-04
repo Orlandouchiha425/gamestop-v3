@@ -31,7 +31,11 @@ export default function SignUpForm({ setUser }) {
       const newUser = await signUp(formData);
 
       setUser(newUser);
-      navigate("/home");
+      if (state.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/home");
+      }
     } catch (err) {
       console.log(err);
       setState({ ...state, error: "Sign Up Failed" });
