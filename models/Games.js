@@ -5,19 +5,19 @@ const gamesSchema = new Schema(
   {
     title: {
       type: String,
-      required: true,
+      // required: true,
     },
-    price: { type: Number, required: true, default: 0 },
-    description: { type: String, required: true },
+    price: { type: Number, default: 0 },
+    description: { type: String },
     genre: { type: String, required: true },
-    platform: { type: String, required: true },
+    platform: { type: String },
     clearance: { type: Boolean },
     img: String,
     pokemon: Boolean,
-    releaseDate: { type: Date, required: true },
+    releaseDate: { type: String },
     publisherInformation: {
       type: Schema.Types.Mixed,
-      required: true,
+      // required: true,
     },
     rating: [
       {

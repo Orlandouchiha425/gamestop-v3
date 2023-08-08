@@ -32,7 +32,7 @@ export default function SignUpForm({ setUser }) {
 
       setUser(newUser);
       if (state.role === "admin") {
-        navigate("/admin");
+        navigate("/create");
       } else {
         navigate("/home");
       }

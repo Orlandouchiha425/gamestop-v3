@@ -9,74 +9,85 @@ import NavBar from "../../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import OneGame from "../OneGame/OneGame";
 import Cart from "../Cart/Cart";
-import AdminComponent from "../Admin/AdminComponent"; // Import the Admin Component
+import Admin from "../Admin/CreateGameForm";
+import CreateGameForm from "../Admin/CreateGameForm";
+import EditPage from "../EditPage/EditPage";
 
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
   const [ratingCount, setRatingCount] = useState(0);
-  // Check if user is logged in and has a role of "admin"
+
   useEffect(() => {
     if (user && user.role === "admin") {
       setAdmin(true);
-      console.log("you are an admin");
     } else {
       setAdmin(false);
-      console.log("you are not an admin :(");
     }
   }, [user]);
 
   return (
     <div>
-      <NavBar setUser={setUser} user={user} />
+      <NavBar setUser={setUser} user={user} admin={admin} setAdmin={setAdmin} />
 
       <Routes>
-        {user ? (
+        <Route path="/home" element={<Home user={user} setUser={setUser} />} />
+        <Route
+          path="/logout"
+          element={
+            <Logout
+              setUser={setUser}
+              user={user}
+              admin={admin}
+              setAdmin={setAdmin}
+            />
+          }
+        />
+        <Route
+          path="/home/:id"
+          element={
+            <OneGame
+              setUser={setUser}
+              user={user}
+              ratingCount={ratingCount}
+              setRatingCount={setRatingCount}
+              admin={admin}
+              setAdmin={setAdmin}
+            />
+          }
+        />
+        <Route path="/cart" element={<Cart setUser={setUser} user={user} />} />
+
+        {/* Routes for Admin only */}
+        {admin && (
           <>
             <Route
-              path="/home"
-              element={<Home user={user} setUser={setUser} />}
+              path="/admin"
+              element={
+                <Admin setUser={setUser} admin={admin} setAdmin={setAdmin} />
+              }
             />
             <Route
-              path="/logout"
+              path="/create"
               element={
-                <Logout
+                <CreateGameForm
                   setUser={setUser}
-                  user={user}
                   admin={admin}
                   setAdmin={setAdmin}
                 />
               }
             />
             <Route
-              path="/home/:id"
+              path="/:id"
               element={
-                <OneGame
-                  setUser={setUser}
-                  user={user}
-                  ratingCount={ratingCount}
-                  setRatingCount={setRatingCount}
-                />
+                <EditPage setUser={setUser} admin={admin} setAdmin={setAdmin} />
               }
             />
-            <Route
-              path="/cart"
-              element={<Cart setUser={setUser} user={user} />}
-            />
-            {admin && (
-              <Route
-                path="/admin"
-                element={
-                  <AdminComponent
-                    setUser={setUser}
-                    admin={admin}
-                    setAdmin={setAdmin}
-                  />
-                }
-              />
-            )}
           </>
-        ) : (
+        )}
+
+        {/* Routes for non-logged-in users */}
+        {!user && (
           <>
             <Route
               path="/signup"

@@ -21,7 +21,11 @@ export default function LoginForm({ setUser }) {
     try {
       const user = await usersService.login(credentials);
       setUser(user);
-      navigate("/home");
+      if (user.role === "admin") {
+        navigate("/create");
+      } else {
+        navigate("/home");
+      }
     } catch {
       setError("Log In Failed - Try Again");
     }
@@ -34,11 +38,11 @@ export default function LoginForm({ setUser }) {
       <div className={styles.loginbox}>
         <h2>Login</h2>
         <h5>
-          Need to Sign Up?{" "}
+          Need to Sign Up?
           <Link className="nav-link active" to="/signup">
             <button>
               <em>Click Here</em>
-            </button>{" "}
+            </button>
           </Link>
         </h5>
         <form autoComplete="off" onSubmit={handleSubmit}>
