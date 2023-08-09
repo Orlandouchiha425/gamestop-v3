@@ -16,6 +16,7 @@ export default function CreateGameForm({ setUser }) {
     clearance: "",
     img: "",
     pokemon: "",
+    quantity: 0,
   });
   const navigate = useNavigate();
   // const [imageData,  setImageData ] = useState('')
@@ -142,6 +143,17 @@ export default function CreateGameForm({ setUser }) {
             placeholder="clearance"
             value={data.clearance}
             onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label for="exampleFormControlInput1">Quantity</label>
+          <input
+            type="number"
+            className="form-control"
+            id="exampleFormControlInput1"
+            onChange={handleChange}
+            name="quantity"
+            value={data.quantity}
           />
         </div>
         <div className="form-group">

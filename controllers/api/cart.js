@@ -1,6 +1,6 @@
 const Games = require("../../models/Cart");
 
-const cart = async (req, res) => {
+const addToCart = async (req, res) => {
   const gameId = req.params.id;
   const quantity = req.body.quantity;
   try {
@@ -36,6 +36,6 @@ const getCartContents = async (req, res) => {
 };
 
 module.exports = {
-  cart,
+  addToCart,
   getCartContents,
 };

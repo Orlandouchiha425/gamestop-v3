@@ -5,8 +5,12 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import styles from "./OneGame.module.css"; // Import the CSS module directly into the component file
 import Rating from "../Rating/Rating";
 import Cart from "../Cart/Cart";
+import { addToCart } from "../../utilities/apiRoutes/cart-api";
+
 export default function OneGame({ user }) {
   const [data, setData] = useState();
+  const [cartItems, setCartItems] = useState([]);
+
   let { id } = useParams();
   const navigate = useNavigate();
   const getOneGameOnly = async () => {
@@ -17,16 +21,24 @@ export default function OneGame({ user }) {
       console.log(error);
     }
   };
+  const handleAddToCart = async () => {
+    try {
+      const response = await addToCart(data._id);
+      setCartItems([...cartItems, response]); // Assuming the response structure is similar to cartItems
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+    }
+  };
 
   const handleDelete = async () => {
     try {
       deleteGames(id);
-      // navigate("/home");
+      navigate("/home");
     } catch (error) {
       console.log(error);
     }
   };
-  <Cart data={data} setData={setData} />;
+  <Cart cartItems={cartItems} />;
   const capitalizeFirstCharacter = (title) => {
     let arr = title.split(" ");
     for (let i = 0; i < arr.length; i++) {
@@ -156,9 +168,15 @@ export default function OneGame({ user }) {
                 {data.description}
               </p>
               <div className={styles["btn-groups"]}>
-                <button type="button" className={styles["add-cart-btn"]}>
-                  <i className="fas fa-shopping-cart"></i>add to cart
+                <button
+                  type="button"
+                  className={styles["add-cart-btn"]}
+                  onClick={handleAddToCart}
+                >
+                  <i className="fas fa-shopping-cart"></i>Add to Cart
                 </button>
+                {/* <Cart data={data} setData={setData} /> */}
+
                 <button type="button" className={styles["buy-now-btn"]}>
                   <i className="fas fa-wallet"></i>buy now
                 </button>

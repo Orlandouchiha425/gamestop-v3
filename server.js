@@ -24,6 +24,7 @@ app.use(require("./config/checkToken"));
 // Put API routes here, before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/games", gamesRouter);
+app.use("api/cart", cartRouter);
 
 // Protect the API routes below from anonymous users
 // const ensureLoggedIn = require("./config/ensureLoggedIn");

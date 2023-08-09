@@ -76,6 +76,11 @@ export default function NavBar({ user }) {
   const renderAdminNav = () => {
     return (
       <nav className="nav styles bg-light">
+        <Link to="/home">
+          <h3 className="text-body gameStopnavFont">
+            <strong>GameStop</strong>
+          </h3>
+        </Link>
         <Link className="nav-link active" to="/home">
           <i className="fa-solid fa-user account">Show Games</i>
         </Link>
