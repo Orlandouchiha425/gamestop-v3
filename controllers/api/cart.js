@@ -21,6 +21,21 @@ const cart = async (req, res) => {
   }
 };
 
+const getCartContents = async (req, res) => {
+  const userId = req.user._id;
+  try {
+    const cartItems = await Cart.find({ user: userId })
+      .populate("game", "title price")
+      .exec();
+
+    res.json({ cartItems });
+  } catch (error) {
+    console.error("Error fetching cart contents:", error);
+    res.status(500).json({ error: "Unable to fetch cart contents" });
+  }
+};
+
 module.exports = {
   cart,
+  getCartContents,
 };

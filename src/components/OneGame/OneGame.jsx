@@ -4,7 +4,7 @@ import { findOnegameById } from "../../utilities/apiRoutes/games-api";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import styles from "./OneGame.module.css"; // Import the CSS module directly into the component file
 import Rating from "../Rating/Rating";
-
+import Cart from "../Cart/Cart";
 export default function OneGame({ user }) {
   const [data, setData] = useState();
   let { id } = useParams();
@@ -26,7 +26,7 @@ export default function OneGame({ user }) {
       console.log(error);
     }
   };
-
+  <Cart data={data} setData={setData} />;
   const capitalizeFirstCharacter = (title) => {
     let arr = title.split(" ");
     for (let i = 0; i < arr.length; i++) {
@@ -50,6 +50,23 @@ export default function OneGame({ user }) {
         <div className={styles.container}>
           <div className={styles["product-div"]}>
             <div className={styles["product-div-left"]}>
+              <Link to="/create">
+                <button type="button" class="btn btn-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="50"
+                    height="30"
+                    fill="currentColor"
+                    class="bi bi-arrow-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                    />
+                  </svg>
+                </button>
+              </Link>
               <div className={styles["img-container"]}>
                 <img
                   src={`${data.img}.jpg`}
@@ -97,6 +114,24 @@ export default function OneGame({ user }) {
         <div className={styles.container}>
           <div className={styles["product-div"]}>
             <div className={styles["product-div-left"]}>
+              <Link to="/home">
+                <button type="button" class="btn btn-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="50"
+                    height="30"
+                    fill="currentColor"
+                    class="bi bi-arrow-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                    />
+                  </svg>
+                </button>
+              </Link>
+
               <div className={styles["img-container"]}>
                 <img
                   src={`${data.img}.jpg`}

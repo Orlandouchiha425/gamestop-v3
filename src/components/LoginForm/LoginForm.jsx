@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./LoginForm.module.css";
 import * as usersService from "../../utilities/users-service";
 import { Link, useNavigate } from "react-router-dom";
+import BasicModal from "../Home/BasicModal";
 
 export default function LoginForm({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -33,6 +34,8 @@ export default function LoginForm({ setUser }) {
 
   return (
     <div>
+      <BasicModal />
+
       {error && <p>{error}</p>}
       <style>{"body { background: linear-gradient(#141e30, #243b55)}"}</style>
       <div className={styles.loginbox}>

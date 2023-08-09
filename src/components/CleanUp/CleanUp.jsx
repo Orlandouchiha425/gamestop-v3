@@ -31,33 +31,6 @@ function CleanUp() {
       <NavBar setUser={setUser} user={user} admin={admin} setAdmin={setAdmin} />
 
       <Routes>
-        <Route path="/home" element={<Home user={user} setUser={setUser} />} />
-        <Route
-          path="/logout"
-          element={
-            <Logout
-              setUser={setUser}
-              user={user}
-              admin={admin}
-              setAdmin={setAdmin}
-            />
-          }
-        />
-        <Route
-          path="/home/:id"
-          element={
-            <OneGame
-              setUser={setUser}
-              user={user}
-              ratingCount={ratingCount}
-              setRatingCount={setRatingCount}
-              admin={admin}
-              setAdmin={setAdmin}
-            />
-          }
-        />
-        <Route path="/cart" element={<Cart setUser={setUser} user={user} />} />
-
         {/* Routes for Admin only */}
         {admin && (
           <>
@@ -106,6 +79,34 @@ function CleanUp() {
             />
           </>
         )}
+
+        {/* Common routes */}
+        <Route path="/home" element={<Home user={user} setUser={setUser} />} />
+        <Route
+          path="/logout"
+          element={
+            <Logout
+              setUser={setUser}
+              user={user}
+              admin={admin}
+              setAdmin={setAdmin}
+            />
+          }
+        />
+        <Route
+          path="/home/:id"
+          element={
+            <OneGame
+              setUser={setUser}
+              user={user}
+              ratingCount={ratingCount}
+              setRatingCount={setRatingCount}
+              admin={admin}
+              setAdmin={setAdmin}
+            />
+          }
+        />
+        <Route path="/cart" element={<Cart setUser={setUser} user={user} />} />
       </Routes>
       <Footer />
     </div>
