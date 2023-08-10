@@ -40,7 +40,7 @@ function a11yProps(index) {
   };
 }
 
-export default function BasicTabs({ setUser }) {
+export default function BasicTabs({ setUser, user }) {
   const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
 
@@ -71,6 +71,9 @@ export default function BasicTabs({ setUser }) {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
+        <h3> Hello, {user.name}</h3>
+        <p>Email: {user.email}</p>
+
         <Button variant="contained" onClick={handleLogOut}>
           Logout
         </Button>
