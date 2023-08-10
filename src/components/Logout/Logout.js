@@ -87,6 +87,7 @@ export default function BasicTabs({ setUser }) {
         <h3>Orlando Valadez</h3>
         <a
           href="https://github.com/Orlandouchiha425?tab=repositories"
+          target="_blank"
           color="black"
           className=".text-white .bg-white"
         >

@@ -12,6 +12,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import LogoutIcon from "@mui/icons-material/Logout";
 import DownloadIcon from "@mui/icons-material/Download";
+import WorkHistorySharpIcon from "@mui/icons-material/WorkHistorySharp";
 import { logout } from "../../utilities/users-service";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -87,8 +88,8 @@ export default function SideBar({ setUser }) {
             link: "/about",
           },
           {
-            text: "test",
-            link: "https://docs.google.com/document/d/1QfFMl11ydzrJ28eoK8awNVes_aBP3EcT/edit?usp=drive_link",
+            text: "portfolio",
+            link: "https://orlandouchiha425.github.io/portfolio-rebuilt/",
             target: "_blank",
           },
         ].map((item, index) => (
@@ -105,7 +106,7 @@ export default function SideBar({ setUser }) {
                   <AccountCircleIcon />
                 ) : (
                   <div>
-                    <LogoutIcon onClick={handleLogOut} />
+                    <WorkHistorySharpIcon />
                   </div>
                 )}
               </ListItemIcon>
