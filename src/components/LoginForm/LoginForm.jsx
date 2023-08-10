@@ -56,7 +56,7 @@ export default function LoginForm({ setUser }) {
               value={credentials.email}
               onChange={handleChange}
               required
-              placeholder="use this email: test@gmail.com"
+              placeholder=" user@gmail.com or admin@gmail.com"
             />
             <label>Email</label>
           </div>

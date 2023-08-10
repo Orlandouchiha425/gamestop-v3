@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUser } from "../utilities/users-api";
 import "./NavBar.css";
+import { logout } from "../utilities/users-service";
+import Button from "@mui/material/Button";
+import LogoutIcon from "@mui/icons-material/Logout";
 import classes from "../components/Cart/CartButton.module.css";
 import SideBar from "../components/SideBar/SideBar";
-export default function NavBar({ user }) {
+export default function NavBar({ user, setUser }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
@@ -21,6 +24,19 @@ export default function NavBar({ user }) {
     };
     fetchUserData();
   }, []);
+
+  const navigate = useNavigate();
+
+  function handleLogOut() {
+    try {
+      logout();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setUser(null);
+      navigate("/");
+    }
+  }
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -70,6 +86,14 @@ export default function NavBar({ user }) {
             </svg>
           </Link>
         </button>
+        <Button
+          onClick={handleLogOut}
+          variant="outlined"
+          startIcon={<LogoutIcon />}
+        >
+          Log out
+        </Button>
+
         <SideBar />
       </nav>
     );
@@ -77,7 +101,7 @@ export default function NavBar({ user }) {
 
   const renderAdminNav = () => {
     return (
-      <nav className="nav styles bg-light">
+      <nav className="nav styles bg-light justify-content-around adnminnav">
         <Link to="/home">
           <h3 className="text-body gameStopnavFont">
             <strong>GameStop</strong>
@@ -118,6 +142,13 @@ export default function NavBar({ user }) {
             Search
           </button>
         </form>
+        <Button
+          onClick={handleLogOut}
+          variant="outlined"
+          startIcon={<LogoutIcon />}
+        >
+          Log out
+        </Button>
         <div className=".float-right">
           <SideBar />
         </div>
