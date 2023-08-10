@@ -11,7 +11,6 @@ import Cart from "../Cart/Cart";
 import Admin from "../Admin/CreateGameForm";
 import CreateGameForm from "../Admin/CreateGameForm";
 import EditPage from "../EditPage/EditPage";
-
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
