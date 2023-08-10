@@ -76,6 +76,10 @@ function CleanUp() {
               path="/*"
               element={<LoginForm setUser={setUser} user={user} />}
             />
+            <Route
+              path="/"
+              element={<LoginForm setUser={setUser} user={user} />}
+            />
           </>
         )}
 
