@@ -6,20 +6,13 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: white !important;
-  /* max-width: 1000px;
-margin-right: 100px; */
-
-  /* background-color: white; */
 }
-footer {
-  margin-top: 100px;
-}
-/* 
-.cardClass {
-  margin-bottom: 80px;
+/* footer {
+  border-top: 2px solid red;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
 } */
-
-/* .cardClass:hover {
-  box-shadow: 0px 30px 18px -8px rgba(242, 2, 2, 0.1);
-  transform: scale(1.1, 1.1);
+/* .page-wrapper {
+  margin-bottom: 600px;
 } */

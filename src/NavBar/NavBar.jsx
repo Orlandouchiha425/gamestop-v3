@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { getUser } from "../utilities/users-api";
 import "./NavBar.css";
 import classes from "../components/Cart/CartButton.module.css";
+import SideBar from "../components/SideBar/SideBar";
 export default function NavBar({ user }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +38,7 @@ export default function NavBar({ user }) {
           </h3>
         </Link>
         <Link to="/home">Home</Link>
-        <Link to="/logout">About Me</Link>
+        <Link to="/about">About Me</Link>
         <form className="form-inline my-2 my-lg-0">
           <input
             className="form-control mr-sm-2"
@@ -69,6 +70,7 @@ export default function NavBar({ user }) {
             </svg>
           </Link>
         </button>
+        <SideBar />
       </nav>
     );
   };
@@ -97,9 +99,28 @@ export default function NavBar({ user }) {
             <path d="..." />
           </svg>
         </Link>
-        <Link to="/logout">
-          <strong>About Me</strong>
-        </Link>
+        <div>
+          <Link to="/about" className="nav-link active ">
+            About Me
+          </Link>
+        </div>
+        <form className="form-inline my-2 my-lg-0">
+          <input
+            className="form-control mr-sm-2"
+            type="search"
+            placeholder="SearchBar Not Working"
+            aria-label="Search"
+          />
+          <button
+            className="btn btn-outline-success my-2 my-sm-0"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
+        <div className=".float-right">
+          <SideBar />
+        </div>
       </nav>
     );
   };

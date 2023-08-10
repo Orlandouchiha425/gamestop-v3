@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import Logout from "../Logout/Logout";
 import LoginForm from "../LoginForm/LoginForm";
 import NavBar from "../../NavBar/NavBar";
-import Footer from "../Footer/Footer";
+import SideBar from "../SideBar/SideBar";
 import OneGame from "../OneGame/OneGame";
 import Cart from "../Cart/Cart";
 import Admin from "../Admin/CreateGameForm";
@@ -83,7 +83,7 @@ function CleanUp() {
         {/* Common routes */}
         <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route
-          path="/logout"
+          path="/about"
           element={
             <Logout
               setUser={setUser}
@@ -108,7 +108,6 @@ function CleanUp() {
         />
         <Route path="/cart" element={<Cart setUser={setUser} user={user} />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
