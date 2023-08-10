@@ -4,6 +4,8 @@ const app = express();
 const logger = require("morgan");
 const path = require("path");
 // const port = 3001;
+const favicon = require("serve-favicon");
+
 const gamesRouter = require("./routes/api/games");
 const cartRouter = require("./routes/api/cart");
 const wishListRouter = require("./routes/api/wishList");
@@ -12,6 +14,7 @@ require("./config/database");
 
 app.use(logger("dev"));
 app.use(express.json());
+app.use(favicon(path.join(__dirname, "build", "favicon.ico")));
 
 // Configure both serve-favicon & static middleware
 // to serve from the production 'build' folder
