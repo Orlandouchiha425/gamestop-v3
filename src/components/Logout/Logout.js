@@ -173,6 +173,7 @@ export default function BasicTabs({ setUser, user }) {
             >
               GitHub <GitHubIcon />
             </a>
+            <p>Phone #: 317-220-5368</p>
             <p>Kokomo Indiana , 46901</p>
             <a href="mailto:valadez425@gmail.com">Valadez425@gmail.com</a>
           </Paper>
