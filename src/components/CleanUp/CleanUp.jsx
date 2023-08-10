@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import Logout from "../Logout/Logout";
 import LoginForm from "../LoginForm/LoginForm";
 import NavBar from "../../NavBar/NavBar";
-import SideBar from "../SideBar/SideBar";
 import OneGame from "../OneGame/OneGame";
 import Cart from "../Cart/Cart";
 import Admin from "../Admin/CreateGameForm";
