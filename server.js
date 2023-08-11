@@ -7,7 +7,7 @@ const path = require("path");
 const favicon = require("serve-favicon");
 
 const gamesRouter = require("./routes/api/games");
-const cartRouter = require("./routes/api/cart");
+const cartRouter = require("./routes/api/order");
 const wishListRouter = require("./routes/api/wishList");
 require("dotenv").config();
 require("./config/database");
@@ -27,7 +27,7 @@ app.use(require("./config/checkToken"));
 // Put API routes here, before the "catch all" route
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/games", gamesRouter);
-app.use("api/cart", cartRouter);
+app.use("/api/orders", cartRouter);
 
 // Protect the API routes below from anonymous users
 // const ensureLoggedIn = require("./config/ensureLoggedIn");

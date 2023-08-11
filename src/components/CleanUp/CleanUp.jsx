@@ -11,6 +11,7 @@ import Cart from "../Cart/Cart";
 import Admin from "../Admin/CreateGameForm";
 import CreateGameForm from "../Admin/CreateGameForm";
 import EditPage from "../EditPage/EditPage";
+import Clearance from "../Clearance/Clearance";
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
@@ -29,7 +30,6 @@ function CleanUp() {
       <NavBar setUser={setUser} user={user} admin={admin} setAdmin={setAdmin} />
 
       <Routes>
-        {/* Routes for Admin only */}
         {admin && (
           <>
             <Route
@@ -57,7 +57,6 @@ function CleanUp() {
           </>
         )}
 
-        {/* Routes for non-logged-in users */}
         {!user && (
           <>
             <Route
@@ -82,7 +81,6 @@ function CleanUp() {
           </>
         )}
 
-        {/* Common routes */}
         <Route path="/home" element={<Home user={user} setUser={setUser} />} />
         <Route
           path="/about"
@@ -95,6 +93,18 @@ function CleanUp() {
             />
           }
         />
+        <Route
+          path="/clearance"
+          element={
+            <Clearance
+              setUser={setUser}
+              user={user}
+              admin={admin}
+              setAdmin={setAdmin}
+            />
+          }
+        />
+
         <Route
           path="/home/:id"
           element={

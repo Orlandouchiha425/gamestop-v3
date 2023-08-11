@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
 import classes from "../components/Cart/CartButton.module.css";
 import SideBar from "../components/SideBar/SideBar";
+import Menu from "../components/Menu/Menu";
 export default function NavBar({ user, setUser }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,6 +49,7 @@ export default function NavBar({ user, setUser }) {
   const renderUserNav = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
+        <Menu />
         <Link to="/home">
           <h3 className="text-body gameStopnavFont">
             <strong>GameStop</strong>
