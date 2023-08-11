@@ -12,6 +12,7 @@ import Admin from "../Admin/CreateGameForm";
 import CreateGameForm from "../Admin/CreateGameForm";
 import EditPage from "../EditPage/EditPage";
 import Clearance from "../Clearance/Clearance";
+import Pokemon from "../Pokemon/Pokemon";
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
@@ -92,6 +93,10 @@ function CleanUp() {
               setAdmin={setAdmin}
             />
           }
+        />
+        <Route
+          path="/pokemon"
+          element={<Pokemon user={user} setUser={setUser} />}
         />
         <Route
           path="/clearance"

@@ -9,7 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import DownloadIcon from "@mui/icons-material/Download";
+import CatchingPokemonIcon from "@mui/icons-material/CatchingPokemon";
 import WorkHistorySharpIcon from "@mui/icons-material/WorkHistorySharp";
 import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import { Link } from "react-router-dom";
@@ -45,10 +45,10 @@ export default function SideBar({ setUser }) {
             icon: <SportsEsportsIcon />,
           },
           {
-            text: "Resume",
-            link: "https://docs.google.com/document/d/1QfFMl11ydzrJ28eoK8awNVes_aBP3EcT/edit?usp=drive_link",
-            target: "_blank",
-            icon: <DownloadIcon />,
+            text: "Pokemon",
+            link: "/pokemon",
+
+            icon: <CatchingPokemonIcon />,
           },
         ].map((item, index) => (
           <ListItem key={item.text} disablePadding>
@@ -66,7 +66,7 @@ export default function SideBar({ setUser }) {
         ))}
       </List>
       <Divider />
-      <List>
+      {/* <List>
         {[
           {
             text: "Profile",
@@ -93,7 +93,7 @@ export default function SideBar({ setUser }) {
             </ListItemButton>
           </ListItem>
         ))}
-      </List>
+      </List> */}
     </Box>
   );
 
