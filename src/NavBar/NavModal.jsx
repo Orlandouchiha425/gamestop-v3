@@ -4,11 +4,13 @@ import { CartContext } from "../CartContext";
 import { useContext } from "react";
 function NavModal() {
   const cart = useContext(CartContext);
+  console.log(cart);
 
-  //   const productsCount = cart.items.reduce(
-  //     (sum, product) => sum + product.quantity,
-  //     0
-  //   );
+  const productsCount =
+    cart.items.length > 0
+      ? cart.items.reduce((sum, product) => sum + product.quantity, 0)
+      : 0;
+
   return (
     <div>
       <button
@@ -17,13 +19,13 @@ function NavModal() {
         data-toggle="modal"
         data-target="#exampleModal"
       >
-        {/* Cart ({productsCount} Items) */}
+        Cart ({productsCount} Items)
       </button>
 
       <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
@@ -33,7 +35,7 @@ function NavModal() {
               <h5 className="modal-title" id="exampleModalLabel">
                 Shopping Cart
               </h5>
-              {/* {productsCount > 0 ? (
+              {productsCount > 0 ? (
                 <>
                   <p>Items in your cart:</p>
                   {cart.items.map((currentProduct, idx) => (
@@ -41,18 +43,16 @@ function NavModal() {
                       key={idx}
                       id={currentProduct._id}
                       quantity={currentProduct.quantity}
-                    ></CartProduct>
+                    />
                   ))}
-
-                  <h1>Total: {cart.getTotalCost().toFixed(2)}</h1> */}
-
-              {/* <button variant="success" onClick={checkout}>
+                  <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+                  {/* <button className="btn btn-success" onClick={checkout}>
                     Purchase items!
                   </button> */}
-              {/* </>
+                </>
               ) : (
                 <h1>There are no items in your cart!</h1>
-              )} */}
+              )}
               <button
                 type="button"
                 className="close"

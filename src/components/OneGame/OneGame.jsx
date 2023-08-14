@@ -10,7 +10,6 @@ import { CartContext } from "../../CartContext";
 import { useContext } from "react";
 export default function OneGame({ user }) {
   const [data, setData] = useState();
-  // const [cartItems, setCartItems] = useState([]);
   let { id } = useParams();
 
   /////CART LOGIC
@@ -26,14 +25,6 @@ export default function OneGame({ user }) {
       console.log(error);
     }
   };
-  // const handleAddToCart = async () => {
-  //   try {
-  //     const response = await addToCart(data._id);
-  //     setCartItems([...cartItems, response]); // Assuming the response structure is similar to cartItems
-  //   } catch (error) {
-  //     console.error("Error adding to cart:", error);
-  //   }
-  // };
 
   const handleDelete = async () => {
     try {

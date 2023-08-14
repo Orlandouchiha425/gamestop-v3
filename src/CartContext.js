@@ -103,7 +103,7 @@ export function CartProvider({ children }) {
   }
 
   const contextValue = {
-    item: cartProducts,
+    items: cartProducts, // Change 'item' to 'items'
     getProductQuantity,
     addOneToCart,
     removeOneFromCart,
@@ -111,6 +111,7 @@ export function CartProvider({ children }) {
     getTotalCost,
     getProductData,
   };
+
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
   );
