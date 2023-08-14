@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { signUp } from "../../utilities/users-service";
 import { useNavigate } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { Link } from "react-router-dom";
-
+// import ImageUploads from "../ImageUploads/ImageUploads";
 export default function SignUpForm({ setUser }) {
+  // const [image, setImage] = useState("");
+
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -12,6 +14,7 @@ export default function SignUpForm({ setUser }) {
     confirm: "",
     error: "",
     role: "user",
+    profileImage: "",
   });
 
   let navigate = useNavigate();
@@ -21,6 +24,9 @@ export default function SignUpForm({ setUser }) {
     setState({ ...state, [name]: value, error: "" });
   };
 
+  // const doNothing = () => {
+  //   return;
+  // };
   const handleSubmit = async (evt) => {
     evt.preventDefault();
 
@@ -28,6 +34,9 @@ export default function SignUpForm({ setUser }) {
       const formData = { ...state };
       delete formData.error;
       delete formData.confirm;
+      if (!formData.profileImage) {
+        delete formData.profileImage;
+      }
       const newUser = await signUp(formData);
 
       setUser(newUser);
@@ -41,6 +50,12 @@ export default function SignUpForm({ setUser }) {
       setState({ ...state, error: "Sign Up Failed" });
     }
   };
+  // useEffect(() => {
+  //   if (image) {
+  //     console.log(`loading ${image}`);
+  //     setState({ ...state, profileImage: image });
+  //   }
+  // }, [image]);
 
   const disable = state.password !== state.confirm;
 
@@ -113,7 +128,14 @@ export default function SignUpForm({ setUser }) {
               <option value="admin">Admin</option>
             </select>
           </div>
-
+          <div>
+            {/* <p>
+              <strong>Add a Profile Image</strong>
+            </p> */}
+            {/* {image ? <img src={image} /> : doNothing} */}
+            {/* <ImageUploads image={image} setImage={setImage} /> */}
+            <br />
+          </div>
           <button type="submit" disabled={disable}>
             <span></span>
             <span></span>

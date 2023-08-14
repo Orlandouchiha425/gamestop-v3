@@ -29,10 +29,10 @@ const gamesSchema = new Schema(
       type: String,
       default: 0,
     },
-    quantity: Number,
-    cart: {
-      quantity: { type: Number, default: 0 },
-    },
+    quantity: { Number, default: 20 },
+    // cart: {
+    //   quantity: { type: Number, default:  },
+    // },
   },
 
   {

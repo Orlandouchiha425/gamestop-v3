@@ -4,14 +4,19 @@ import { findOnegameById } from "../../utilities/apiRoutes/games-api";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import styles from "./OneGame.module.css"; // Import the CSS module directly into the component file
 import Rating from "../Rating/Rating";
-import Cart from "../Cart/Cart";
-import { addToCart } from "../../utilities/apiRoutes/cart-api";
-
+import CartProduct from "../../components/Cart/CartProduct";
+// import Cart from "../Cart/Cart";
+import { CartContext } from "../../CartContext";
+import { useContext } from "react";
 export default function OneGame({ user }) {
   const [data, setData] = useState();
-  const [cartItems, setCartItems] = useState([]);
-
+  // const [cartItems, setCartItems] = useState([]);
   let { id } = useParams();
+
+  /////CART LOGIC
+  const cart = useContext(CartContext);
+  const productQuantity = cart.getProductQuantity(id);
+
   const navigate = useNavigate();
   const getOneGameOnly = async () => {
     try {
@@ -21,14 +26,14 @@ export default function OneGame({ user }) {
       console.log(error);
     }
   };
-  const handleAddToCart = async () => {
-    try {
-      const response = await addToCart(data._id);
-      setCartItems([...cartItems, response]); // Assuming the response structure is similar to cartItems
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-    }
-  };
+  // const handleAddToCart = async () => {
+  //   try {
+  //     const response = await addToCart(data._id);
+  //     setCartItems([...cartItems, response]); // Assuming the response structure is similar to cartItems
+  //   } catch (error) {
+  //     console.error("Error adding to cart:", error);
+  //   }
+  // };
 
   const handleDelete = async () => {
     try {
@@ -38,7 +43,7 @@ export default function OneGame({ user }) {
       console.log(error);
     }
   };
-  <Cart cartItems={cartItems} />;
+  // <Cart cartItems={cartItems} />;
   const capitalizeFirstCharacter = (title) => {
     let arr = title.split(" ");
     for (let i = 0; i < arr.length; i++) {
@@ -56,6 +61,7 @@ export default function OneGame({ user }) {
     if (!data || !data._id) {
       return null;
     }
+    <CartProduct data={data} setData={setData} />;
 
     return user.role === "admin" ? (
       <div className={styles["main-wrapper"]}>
@@ -151,6 +157,7 @@ export default function OneGame({ user }) {
                   className={`${styles.zoom} ${styles.images}`}
                 />
                 <p className={styles.textalign}>By: {data.platform}</p>
+                <h5>Quantity:</h5> {productQuantity}
               </div>
               {/* <div className={stysles["hover-container"]}>
               {data.}
@@ -168,18 +175,44 @@ export default function OneGame({ user }) {
                 {data.description}
               </p>
               <div className={styles["btn-groups"]}>
-                <button
-                  type="button"
-                  className={styles["add-cart-btn"]}
-                  onClick={handleAddToCart}
-                >
-                  <i className="fas fa-shopping-cart"></i>Add to Cart
-                </button>
-                {/* <Cart data={data} setData={setData} /> */}
-
-                <button type="button" className={styles["buy-now-btn"]}>
-                  <i className="fas fa-wallet"></i>buy now
-                </button>
+                {productQuantity > 0 ? (
+                  <>
+                    <button
+                      m
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        console.log("button clicked");
+                        cart.addOneToCart(id);
+                      }}
+                    >
+                      +{/* <i className="fas fa-shopping-cart">+</i> */}
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button
+                      type="button"
+                      className="btn-primary"
+                      onClick={() => {
+                        console.log("button clicked");
+                        cart.removeOneFromCart(id);
+                      }}
+                    >
+                      -
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    type="button"
+                    className={styles["add-cart-btn"]}
+                    onClick={() => {
+                      console.log("button clicked");
+                      cart.addOneToCart(id);
+                    }}
+                  >
+                    <i className="fas fa-shopping-cart"></i>
+                    Add to Cart
+                  </button>
+                )}
               </div>
             </div>
           </div>
