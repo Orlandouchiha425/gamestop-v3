@@ -34,7 +34,6 @@ export default function OneGame({ user }) {
       console.log(error);
     }
   };
-  // <Cart cartItems={cartItems} />;
   const capitalizeFirstCharacter = (title) => {
     let arr = title.split(" ");
     for (let i = 0; i < arr.length; i++) {

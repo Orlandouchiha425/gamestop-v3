@@ -103,7 +103,7 @@ export function CartProvider({ children }) {
   }
 
   const contextValue = {
-    items: cartProducts, // Change 'item' to 'items'
+    items: cartProducts,
     getProductQuantity,
     addOneToCart,
     removeOneFromCart,

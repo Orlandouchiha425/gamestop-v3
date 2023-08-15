@@ -7,15 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white !important;
 }
-/* footer {
-  border-top: 2px solid red;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-} */
-/* .page-wrapper {
-  margin-bottom: 600px;
-} */
+
 nav {
   margin-bottom: 30px;
 }
