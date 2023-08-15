@@ -14,6 +14,7 @@ export default function NavBar({ user, setUser }) {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -28,6 +29,9 @@ export default function NavBar({ user, setUser }) {
     fetchUserData();
   }, []);
 
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
   const navigate = useNavigate();
 
   function handleLogOut() {
@@ -66,7 +70,7 @@ export default function NavBar({ user, setUser }) {
             placeholder="Search"
             aria-label="Search"
           /> */}
-          <SearchBar />
+          <SearchBar onSearch={handleSearch} />
         </form>
         <div className="rounded-circle">
           <p>Welcome {user.name}</p>

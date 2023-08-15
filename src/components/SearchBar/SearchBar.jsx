@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { findAllGames } from "../../utilities/apiRoutes/games-api";
 import { Link } from "react-router-dom";
-
+import OneGame from "../OneGame/OneGame";
 function SearchBar() {
   const [searchInput, setSearchInput] = useState("");
   const [allGames, setAllGames] = useState([]);
@@ -31,20 +31,11 @@ function SearchBar() {
     );
     setFilteredGames(filtered);
   };
-
-  const handleSearchSubmit = () => {
-    if (filteredGames.length > 0) {
-      const gameId = filteredGames[0]._id;
-      <Link to={`/home/${gameId}`} />;
-    }
-  };
-
-  const handleKeyPress = (evt) => {
-    if (evt.key === "Enter") {
-      handleSearchSubmit();
-    }
-  };
-
+  <OneGame
+    searchInput={searchInput}
+    allGames={allGames}
+    filteredGames={filteredGames}
+  />;
   return (
     <div>
       <input
@@ -52,14 +43,13 @@ function SearchBar() {
         placeholder="Search by title..."
         value={searchInput}
         onChange={handleChange}
-        onKeyPress={handleKeyPress}
       />
 
       {filteredGames.length > 0 ? (
         <Link to={`/home/${filteredGames[0]._id}`}>
           <button
             className="btn btn-outline-success my-2 my-sm-0"
-            type="button"
+            type="submit"
           >
             Submit!
           </button>

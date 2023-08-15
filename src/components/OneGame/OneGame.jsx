@@ -8,7 +8,7 @@ import CartProduct from "../../components/Cart/CartProduct";
 // import Cart from "../Cart/Cart";
 import { CartContext } from "../../CartContext";
 import { useContext } from "react";
-export default function OneGame({ user }) {
+export default function OneGame({ user, onSearch }) {
   const [data, setData] = useState();
   let { id } = useParams();
 
@@ -47,6 +47,9 @@ export default function OneGame({ user }) {
     getOneGameOnly();
   }, []);
 
+  useEffect(() => {
+    getOneGameOnly(onSearch);
+  }, [onSearch]);
   const adminGame = () => {
     if (!data || !data._id) {
       return null;
