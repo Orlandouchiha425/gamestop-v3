@@ -21,7 +21,8 @@ async function cart(req, res) {
 async function addToCart(req, res) {
   try {
     const cart = await Order.getCart(req.user._id);
-    await cart.addItemToCart(req.params.id);
+    const { id } = req.params;
+    await cart.addItemToCart(id);
     res.status(200).json(cart);
   } catch (e) {
     res.status(400).json({ msg: e.message });
@@ -32,7 +33,31 @@ async function addToCart(req, res) {
 async function setItemQtyInCart(req, res) {
   try {
     const cart = await Order.getCart(req.user._id);
-    await cart.setItemQty(req.body.itemId, req.body.newQty);
+    const { itemId, newQty } = req.body;
+
+    if (typeof newQty !== "number" || newQty <= 0) {
+      return res.status(400).json({ msg: "Invalid quantity value." });
+    }
+
+    const lineItem = cart.lineItems.find(
+      (item) => item.item.toString() === itemId
+    );
+    if (!lineItem) {
+      return res.status(400).json({ msg: "Item not found in the cart." });
+    }
+
+    await cart.setItemQty(itemId, newQty); // Using the newQty
+    res.status(200).json(cart);
+  } catch (e) {
+    res.status(400).json({ msg: e.message });
+  }
+}
+
+async function setItemQtyInCart(req, res) {
+  try {
+    const cart = await Order.getCart(req.user._id);
+    const { itemId, newQty } = req.body;
+    await cart.setItemQty(itemId, newQty); // Using the newQty
     res.status(200).json(cart);
   } catch (e) {
     res.status(400).json({ msg: e.message });

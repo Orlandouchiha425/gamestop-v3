@@ -1,4 +1,4 @@
-import sendRequest from "./send-request";
+import { sendRequest } from "../send-request";
 
 const BASE_URL = "/api/orders";
 
@@ -10,7 +10,7 @@ export function getCart() {
 // Add an item to the cart
 export function addItemToCart(itemId) {
   // Just send itemId for best security (no pricing)
-  return sendRequest(`${BASE_URL}/cart/items/${itemId}`, "POST");
+  return sendRequest(`${BASE_URL}/${itemId}`, "POST");
 }
 
 // Update the item's qty in the cart

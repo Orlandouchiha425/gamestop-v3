@@ -13,7 +13,8 @@ import CreateGameForm from "../Admin/CreateGameForm";
 import EditPage from "../EditPage/EditPage";
 import Clearance from "../Clearance/Clearance";
 import Pokemon from "../Pokemon/Pokemon";
-import CartProvider from "../../CartContext";
+import { CartProvider } from "../../CartContext";
+import SearchBar from "../SearchBar/SearchBar";
 function CleanUp() {
   const [user, setUser] = useState(getUser());
   const [admin, setAdmin] = useState(false);
@@ -137,6 +138,20 @@ function CleanUp() {
               />
             }
           />
+          <Route
+            path="/search" // Define a unique path for SearchBar
+            element={
+              <SearchBar
+                setUser={setUser}
+                user={user}
+                ratingCount={ratingCount}
+                setRatingCount={setRatingCount}
+                admin={admin}
+                setAdmin={setAdmin}
+              />
+            }
+          />
+
           <Route
             path="/cart"
             element={<CartProduct setUser={setUser} user={user} />}
