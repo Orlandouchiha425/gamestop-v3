@@ -1,17 +1,20 @@
 import React from "react";
 import { CartContext } from "../../CartContext";
 import { useContext } from "react";
-function CartProduct({ data, setData }) {
-  const cart = useContext(CartContext);
 
-  if (!data) {
+function CartProduct({ id }) {
+  const cart = useContext(CartContext);
+  const productData = cart.getProductData(id);
+
+  if (!productData) {
     return <p>Loading...</p>;
   }
-  const quantity = data.quantity;
-  const productData = cart.getProductData(data._id);
+
   return (
     <>
       <h3>{productData.title}</h3>
+      <p>{productData.quantity} total</p>
+      <hr />
     </>
   );
 }

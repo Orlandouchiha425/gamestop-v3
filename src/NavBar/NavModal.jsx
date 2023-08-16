@@ -35,24 +35,7 @@ function NavModal() {
               <h5 className="modal-title" id="exampleModalLabel">
                 Shopping Cart
               </h5>
-              {productsCount > 0 ? (
-                <>
-                  <p>Items in your cart:</p>
-                  {cart.items.map((currentProduct, idx) => (
-                    <CartProduct
-                      key={idx}
-                      id={currentProduct._id}
-                      quantity={currentProduct.quantity}
-                    />
-                  ))}
-                  <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
-                  {/* <button className="btn btn-success" onClick={checkout}>
-                    Purchase items!
-                  </button> */}
-                </>
-              ) : (
-                <h1>There are no items in your cart!</h1>
-              )}
+
               <button
                 type="button"
                 className="close"
@@ -62,7 +45,23 @@ function NavModal() {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body">...</div>
+            <div className="modal-body">
+              {productsCount > 0 ? (
+                <>
+                  <p>Items in your cart:</p>
+
+                  {cart.items.map((currentProduct, idx) => (
+                    <CartProduct key={idx} />
+                  ))}
+                  <h1>Total: {cart.getTotalCost().toFixed(2)}</h1>
+                  {/* <button className="btn btn-success" onClick={checkout}>
+                    Purchase items!
+                  </button> */}
+                </>
+              ) : (
+                <h1>There are no items in your cart!</h1>
+              )}
+            </div>
             <div className="modal-footer">
               <button
                 type="button"

@@ -132,19 +132,9 @@ export default function NavBar({ user, setUser }) {
             About Me
           </Link>
         </div>
+
         <form className="form-inline my-2 my-lg-0">
-          <input
-            className="form-control mr-sm-2"
-            type="search"
-            placeholder="SearchBar Not Working"
-            aria-label="Search"
-          />
-          <button
-            className="btn btn-outline-success my-2 my-sm-0"
-            type="submit"
-          >
-            Search
-          </button>
+          <SearchBar onSearch={handleSearch} />
         </form>
         <Button
           onClick={handleLogOut}

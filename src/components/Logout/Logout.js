@@ -121,7 +121,7 @@ export default function BasicTabs({ setUser, user }) {
             "& > :not(style)": {
               m: 1,
               width: 800,
-              height: 500,
+              height: 900,
             },
           }}
         >
