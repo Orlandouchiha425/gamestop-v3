@@ -48,7 +48,7 @@ export default function SideBar({ setUser }) {
           },
           {
             text: "Resume",
-            link: "https://docs.google.com/document/d/1QfFMl11ydzrJ28eoK8awNVes_aBP3EcT/edit?usp=drive_link",
+            link: "https://docs.google.com/document/d/1jXGq4WRgnHaXfrq5d8mdk1vxKdAtf9Wt/edit?usp=sharing&ouid=110396775729397828043&rtpof=true&sd=true",
             target: "_blank",
           },
         ].map((item, index) => (
