@@ -14,3 +14,36 @@ nav {
 .adnminnav {
   margin-bottom: 30px;
 }
+
+/* Default: 3 cards per row */
+.flexContainer > * {
+  flex: 1 1 calc(33.333% - 30px);
+  box-sizing: border-box;
+  max-width: calc(33.333% - 30px);
+}
+
+/* Medium screen: 2 per row */
+@media (max-width: 992px) {
+  .flexContainer > * {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+/* Small screen: 1 per row */
+@media (max-width: 600px) {
+  .flexContainer {
+    justify-content: center;
+    margin: 10px;
+    gap: 15px;
+  }
+
+  .flexContainer > * {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .shadow:hover {
+    transform: none;
+  }
+}

@@ -44,7 +44,7 @@ const pingWebsite = async (url) => {
 };
 
 // URL of the website you want to keep awake
-const WEBSITE_URL = "https://gamestopbyorlandovaladez.onrender.com/"; // Replace with your actual URL
+const WEBSITE_URL = "https://gamestopbyorlandovaladez.onrender.com/";
 
 // Function to check if current time is within the desired window (2 PM - 7 PM EST)
 const isWithinTimeWindow = () => {
