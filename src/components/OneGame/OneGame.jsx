@@ -176,7 +176,7 @@ export default function OneGame({ user, onSearch }) {
                       className="btn btn-primary"
                       onClick={() => {
                         console.log("button clicked");
-                        cart.addOneToCart(id);
+                        cart.addOneToCart(id, data.price);
                       }}
                     >
                       +{/* <i className="fas fa-shopping-cart">+</i> */}
@@ -199,7 +199,7 @@ export default function OneGame({ user, onSearch }) {
                     className={styles["add-cart-btn"]}
                     onClick={() => {
                       console.log("button clicked");
-                      cart.addOneToCart(id);
+                      cart.addOneToCart(data.id, data.price);
                     }}
                   >
                     <i className="fas fa-shopping-cart"></i>

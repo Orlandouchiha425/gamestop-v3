@@ -48,10 +48,10 @@ export default function NavBar({ user, setUser }) {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   const btnClasses = `${classes.button} ${
     btnIsHighlighted ? classes.bump : ""
   }`;
-
   const renderUserNav = () => {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-around">
